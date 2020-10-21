@@ -1,15 +1,13 @@
-Package: yourPkg
-Title: What the Package Does (One Line, Title Case)
+Package: Covid19Aus
+Title: ETC5523 Shiny Assesstment Package
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Abhishek",
+           family = "Sinha",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+           email = "asin0080@student.monash.edu")
+Description: This package is an extension to the shiny app created to analyse the Covid19 numbers and trend in Australia.
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
