@@ -1,3 +1,4 @@
+library(Covid19Aus)
 library(shiny)
 library(tidyverse)
 library(plotly)
