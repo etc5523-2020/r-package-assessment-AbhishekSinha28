@@ -73,11 +73,11 @@ Secondly, on the server side, the function `average_measure` can be used to prod
 ```{r}
 library(dplyr)
 
-example <- average_measure(usa_covid_data, "tot_cases") %>%
-  arrange(-tot_cases) %>%
-  head(10)
+#example <- average_measure(usa_covid_data, "tot_cases") %>%
+#  arrange(-tot_cases) %>%
+#  head(10)
 
-example
+#example
 ```
 
 The final function, `output_table`, converts any data frame into a stylish and presentable table using the `kableExtra` package and can be seen alongside the time series chart in the application.
@@ -85,11 +85,11 @@ The final function, `output_table`, converts any data frame into a stylish and p
 ```{r present}
 library(dplyr)
 
-usa_covid_data %>%
-  select(date, state, tot_cases)%>%
-  filter(state == "california") %>%
-  head(5) %>%
-output_table("cases", "Total cases in California per day")
+#usa_covid_data %>%
+#  select(date, state, tot_cases)%>%
+#  filter(state == "california") %>%
+#  head(5) %>%
+#output_table("cases", "Total cases in California per day")
 ```
 
 ## Additional information

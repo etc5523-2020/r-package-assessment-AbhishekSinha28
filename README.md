@@ -76,7 +76,10 @@ set.seed(10)
 library(Covid19US)
 
 random_states(usa_state_map)
+#> [1] "utah"    "florida"
+```
 
+``` r
 select_input("state", usa_state_map)
 ```
 
@@ -88,11 +91,24 @@ in the application.
 ``` r
 library(dplyr)
 
-#example <- average_measure(usa_covid_data, "tot_cases") %>%
-#  arrange(-tot_cases) %>%
-#  head(10)
+example <- average_measure(usa_covid_data, "tot_cases") %>%
+  arrange(-tot_cases) %>%
+  head(10)
 
-#example
+example
+#> # A tibble: 10 x 3
+#>    date       tot_cases state  
+#>    <date>         <dbl> <chr>  
+#>  1 2020-09-28    118822 average
+#>  2 2020-09-27    118257 average
+#>  3 2020-09-26    117651 average
+#>  4 2020-09-25    116820 average
+#>  5 2020-09-24    115977 average
+#>  6 2020-09-23    115272 average
+#>  7 2020-09-22    114583 average
+#>  8 2020-09-21    113762 average
+#>  9 2020-09-20    113106 average
+#> 10 2020-09-19    112482 average
 ```
 
 The final function, `output_table`, converts any data frame into a
@@ -102,12 +118,166 @@ seen alongside the time series chart in the application.
 ``` r
 library(dplyr)
 
-#usa_covid_data %>%
-#  select(date, state, tot_cases)%>%
-#  filter(state == "california") %>%
-#  head(5) %>%
-#output_table("cases", "Total cases in California per day")
+usa_covid_data %>%
+  select(date, state, tot_cases)%>%
+  filter(state == "california") %>%
+  head(5) %>%
+output_table("cases", "Total cases in California per day")
 ```
+
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; ">
+
+<table class="table table-bordered" style="margin-left: auto; margin-right: auto;">
+
+<caption>
+
+Total cases in California per day
+
+</caption>
+
+<thead>
+
+<tr>
+
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+
+date
+
+</th>
+
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+
+state
+
+</th>
+
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+
+tot\_cases
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td style="text-align:left;">
+
+2020-01-22
+
+</td>
+
+<td style="text-align:left;">
+
+california
+
+</td>
+
+<td style="text-align:right;">
+
+0
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+2020-01-23
+
+</td>
+
+<td style="text-align:left;">
+
+california
+
+</td>
+
+<td style="text-align:right;">
+
+0
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+2020-01-24
+
+</td>
+
+<td style="text-align:left;">
+
+california
+
+</td>
+
+<td style="text-align:right;">
+
+0
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+2020-01-25
+
+</td>
+
+<td style="text-align:left;">
+
+california
+
+</td>
+
+<td style="text-align:right;">
+
+0
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+2020-01-26
+
+</td>
+
+<td style="text-align:left;">
+
+california
+
+</td>
+
+<td style="text-align:right;">
+
+2
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
 
 ## Additional information
 
