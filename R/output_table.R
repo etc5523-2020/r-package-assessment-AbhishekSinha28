@@ -13,14 +13,13 @@
 #' @export
 #'
 #' 
-present_table <- function(data, measure, caption){
+output_table <- function(data, measure, caption){
   data %>%
     kableExtra::kable(digits = 0,
                       format.args = list(big.mark = ","),
                       caption = caption,
                       format = "html",
                       escape = FALSE) %>%
-    kableExtra::row_spec(0,background = "black") %>%
     kableExtra::kable_styling(bootstrap_options = c("border"))%>%
     kableExtra::scroll_box(height = "500px")
 }

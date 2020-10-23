@@ -10,7 +10,7 @@
 #' @export
 #'
 #' 
-create_input <- function(input, data){
+select_input <- function(input, data){
   if(input == "measure"){
     shiny::radioButtons("measure",
                         "Select Measure",
@@ -20,7 +20,7 @@ create_input <- function(input, data){
     shiny::selectizeInput("state",
                           "Select State",
                           choices = unique(data$region),
-                          selected = c(random_states(data)),
+                          selected = c(states_random(data)),
                           multiple = TRUE)
   } else if(input == "date"){
     shiny::sliderInput("date",

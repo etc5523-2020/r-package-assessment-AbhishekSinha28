@@ -11,14 +11,10 @@ library(plotly)
 library(kableExtra)
 library(mapproj)
 
-# data import --------------------------------------------------
-# us_covid <- read_csv("data/United_States_COVID-19_Cases_and_Deaths_by_State_over_Time.csv")
-# us_names <- read_csv("data/csvData.csv")
 
-# data wrangling -----------------------------------------------
-us_covid_clean <- covid19usa::usa_covid_data 
+us_covid_clean <- Covid19US::usa_covid_data 
 
-mapdata <- covid19usa::usa_state_map
+mapdata <- Covid19US::usa_state_map
 
 us_cases <- us_covid_clean %>%
     select(date,
@@ -44,17 +40,14 @@ avg_deaths <-
     summarise(tot_death = mean(tot_death)) %>%
     mutate(state = "average")
 
-
-
-# ui -----------------------------------------------------------
 ui <- fluidPage(
     
     
-    titlePanel(h1("USA COVID19 Data")),
+    titlePanel(h1("Analyzing Covid19 numbers in the USA")),
     sidebarLayout(
         sidebarPanel(
             h3("About"),
-            helpText("This application was created as part of the Shiny Assessment for ETC5523, Semester 2 by Lachlan Thomas Moody. The purpose of this application is to allow users to explore COVID-19 related data in the continental United States of America to compare the volume of cases and deaths recorded by each of the states in the country. This is done to gain a better understanding of the virus and where it is localised within the country."),
+            helpText("This application was created as part of the Shiny Assessment for ETC5523, Semester 2 by Abhishek Sinha. The purpose of this application is to allow users to explore COVID-19 related data in the continental United States of America to compare the volume of cases and deaths recorded by each of the states in the country. This is done to gain a better understanding of the virus and where it is localised within the country."),
             h3("Control Panel"),
             br(),
             create_input("measure"),
@@ -75,16 +68,12 @@ ui <- fluidPage(
             plotlyOutput("testplot", height = "600px", width = "1200px"),
             h2("Impact of COVID19 over time in the USA"),
             helpText("The plot and accompanying data table add a temporal element to the spread of COVID19 in the country. Any number of states can be selected in the Control Panel or by double-clicking on the map to compare the change in COVID19 overtime between states and to the average. For example, if Texas and California are selected, it can be seen that the two states have shared a similar progression in 'Total Cases' with a increase in the rate of infection beginning in late June, both far surpassing the national average. Additionally, the time frame displayed can also be altered in the Control Panel."),
-            splitLayout(plotlyOutput("myplot", height = "500px", width = "800px"),
-                        tableOutput("mykable"),
-                        cellArgs = list(style = "padding: 5px"),
-                        cellWidths = c("60%", "40%"))
+            plotlyOutput("myplot", height = "600px", width = "1200px"),
+            tableOutput("mykable")
         )
-    ),
-    includeCSS("styles.css")
+    )
 )
 
-# server -------------------------------------------------------
 server <- function(input, output, session) {
     
     
@@ -180,7 +169,7 @@ server <- function(input, output, session) {
                        AVERAGE = average) %>%
                 filter(DATE >= input$date[1] & DATE <= input$date[2])
             
-            present_table(combined, "cases", paste("State cases compared to national average"))}
+            output_table(combined, "cases", paste("State cases compared to national average"))}
         
         else if(input$measure == "Total Deaths"){
             state_deaths <- us_deaths %>%
@@ -196,7 +185,7 @@ server <- function(input, output, session) {
                        AVERAGE = average) %>%
                 filter(DATE >= input$date[1] & DATE <= input$date[2])
             
-            present_table(combined, "deaths", paste("State deaths compared to national average"))
+            output_table(combined, "deaths", paste("State deaths compared to national average"))
         }
     }
     
@@ -221,11 +210,10 @@ server <- function(input, output, session) {
                     theme_void() +
                     coord_map() +
                     labs(fill = "Total Cases") +
-                    scale_fill_distiller(palette = "Reds", direction = 1, label = comma) +
+                    scale_fill_distiller(palette = "Blue", direction = 1, label = comma) +
                     theme(panel.background = element_rect(fill = "black"),
                           plot.background = element_rect(fill = "black"),
                           text = element_text(color = "white", size = 16),
-                          axis.line = element_line(color = "black"),
                           panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
                     ggtitle("Total COVID19 Cases by State")
                 
@@ -251,11 +239,10 @@ server <- function(input, output, session) {
                     theme_void() +
                     coord_map() +
                     labs(fill = "Total Deaths") +
-                    scale_fill_distiller(palette = "Reds", direction = 1, label = comma)+
+                    scale_fill_distiller(palette = "Blue", direction = 1, label = comma)+
                     theme(panel.background = element_rect(fill = "black"),
                           plot.background = element_rect(fill = "black"),
                           text = element_text(color = "white", size = 16),
-                          axis.line = element_line(color = "black"),
                           panel.grid.major = element_blank(), panel.grid.minor = element_blank()) +
                     ggtitle("Total COVID19 Deaths by State")
                 
@@ -266,5 +253,4 @@ server <- function(input, output, session) {
     
 }
 
-# run ----------------------------------------------------------
 shinyApp(ui = ui, server = server)
