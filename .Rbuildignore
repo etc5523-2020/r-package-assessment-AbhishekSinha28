@@ -3,3 +3,4 @@
 ^.*\.Rproj$
 ^LICENSE\.md$
 ^Covid19US\.Rproj$
+^README\.Rmd$
