@@ -1,0 +1,55 @@
+---
+title: "Analyzing COVID19 in the US with Shiny App"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Analyzing COVID19 in the US with Shiny App}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.align='center'
+)
+```
+
+This vignette is for the use of the `Covid19US` package, and describes how to launch the shiny application contained within the package, what the application itself can do, and guidelines for using and interpreting the visualizations contained within it.
+
+## Loading Covid19US 
+Before the application can be launched, the package itself must be loaded. This can be done directly from [GitHub](https://github.com/etc5523-2020/r-package-assessment-AbhishekSinha28) with:
+
+```{r install, eval=FALSE}
+# install.packages("devtools")
+devtools::install_github("etc5523-2020/r-package-assessment-AbhishekSinha28")
+```
+
+## Usage
+Once the package is downloaded, the primary component of the package, the shiny application, can then be launched using the following `launch_app` function.
+```{r launch, eval=FALSE}
+library(Covid19US)
+launch_app()
+```
+
+The application is an interactive web application that allows users to explore COVID-19 related data in the continental United States of America (USA) sourced from the [Centers for Disease Control and Prevention](https://data.cdc.gov/Case-Surveillance/United-States-COVID-19-Cases-and-Deaths-by-State-o/9mfq-cb36?fbclid=IwAR1QbXngfoMy1NE9vO-QSe40zfo11iApIqOr4Hb3EB6eMia7JSY2DncPF00) using shiny.  
+
+Within the app, users can compare the total number of cases and deaths recorded by each of the states in the country using the three following data visualizations:   
+
+1. A choropleth map displaying the spatial distribution of the total number of cases and deaths respectively, recorded at the state level.  
+
+
+2. A timseries chart displaying the change in total cases and deaths recorded at the state level between the January'22 and the September'28 of 2020, compared to the national average number of cases and deaths respectively.  
+
+3.  An accompanying table recording the exact number of cases and deaths recorded at the state level, and the national average, over the same time frame.  
+
+In addition, the primary benefit of shiny is in its ability to make interactive visualizations. Thus, there are also three different inputs that can be altered to update the appearance of the various graphics. They are: 
+
+1. Select Measure: A collection of radio buttons that allows the user to specify whether data on the total number of COVID19 cases or deaths are shown for the USA in all visualisations.     
+
+2. Select State: A select input that allows the user to specify any number of states for comparison in the timeseries plot and accompanying table. Can also be updated by selecting states on the USA state map. States can be deselected by clicking on the state name and pressing `backspace`.    
+
+3. Select Date: The final control is a date slider that allows a range of dates to be specified and displayed in the output. For example, if only data for the summer months (June-August), the user could navigate either end of the slider from `2020-06-01` to `2020-08-31`.    
+
+<br>
+More detailed instructions on how to use the applications are provided within the app itself and further information on its construction can be found in the following [GitHub repository](https://github.com/etc5523-2020/r-package-assessment-AbhishekSinha28).
