@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ETC5523 Shiny Package • Covid19US</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -62,26 +62,80 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="your-package-name" class="section level1">
+<div id="covid19us" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#your-package-name" class="anchor"></a>Your Package Name</h1></div>
+<a href="#covid19us" class="anchor"></a>Covid19US</h1></div>
 <!-- badges: start -->
-
-<p>The goal of <em>your package name</em> is to …</p>
+<!-- badges: end -->
+<p>The goal of <strong>Covid19US</strong> is to embed a newly created shiny application for exploring COVID-19 data in the United States of America (USA) within a package, and to refactor various parts of the application logic into R functions exported by the package.</p>
+<div id="shiny-application" class="section level2">
+<h2 class="hasAnchor">
+<a href="#shiny-application" class="anchor"></a>Shiny application</h2>
+<p>As stated above, the shiny application was created using the R package, shiny, to allow users to explore COVID-19 related data in the continental United States of America. For both the total number of cases and total number of deaths, the following data visualizations are provided:</p>
+<ol>
+<li>A choropleth map displaying the spatial distribution of the total number of cases and deaths respectively, recorded at the state level.<br>
+</li>
+<li>A timseries chart displaying the change in total cases and deaths recorded at the state level between the January’22 and the September’28 of 2020, compared to the national average number of cases and deaths respectively.<br>
+</li>
+<li>An accompanying table recording the exact number of cases and deaths recorded at the state level, and the national average, over the same time frame.</li>
+</ol>
+<p>For more information on the application itself and the data contained within it, please click <a href="https://github.com/etc5523-2020/r-package-assessment-AbhishekSinha28">here</a>.</p>
+</div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the <em>your package name</em> with:</p>
+<!-- You can install the released version of Covid19US from [CRAN](https://CRAN.R-project.org) with: -->
+<!-- ``` r -->
+<!-- install.packages("Covid19US") -->
+<!-- ``` -->
+<p>The development version of <strong>Covid19US</strong> can be installed directly from <a href="https://github.com/etc5523-2020/r-package-assessment-AbhishekSinha28">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit">
-</pre></div>
+<span class="co"># install.packages("devtools")</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"etc5523-2020/r-package-assessment-AbhishekSinha28"</span><span class="op">)</span></pre></div>
 </div>
-<div id="example" class="section level2">
+<div id="getting-started" class="section level2">
 <h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
-<p>This is a basic example which shows you how to solve a common problem:</p>
+<a href="#getting-started" class="anchor"></a>Getting started</h2>
+<p>The application can then be launched using the following code:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">yourpkg</span><span class="op">)</span>
-<span class="co">## basic example code</span></pre></div>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">Covid19US</span><span class="op">)</span>
+
+<span class="fu"><a href="reference/launch_app.html">launch_app</a></span><span class="op">(</span><span class="op">)</span></pre></div>
+</div>
+<div id="package-functions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#package-functions" class="anchor"></a>Package functions</h2>
+<p>This function was created and implemented within the <code>select_input</code> function in order to automatically select two different US states for comparison each time the application is launched. In addition, this function is used to create all adjustable inputs for the application.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">Covid19US</span><span class="op">)</span>
+
+<span class="fu"><a href="reference/random_states.html">random_states</a></span><span class="op">(</span><span class="va">usa_state_map</span><span class="op">)</span>
+
+<span class="fu"><a href="reference/select_input.html">select_input</a></span><span class="op">(</span><span class="st">"state"</span>, <span class="va">usa_state_map</span><span class="op">)</span></pre></div>
+<p>Secondly, on the server side, the function <code>average_measure</code> can be used to produce a summary count of either <code>tot_cases</code> or <code>tot_death</code> for COVID19 in the USA. This is used to construct the time series plot seen in the application.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+
+<span class="co">#example &lt;- average_measure(usa_covid_data, "tot_cases") %&gt;%</span>
+<span class="co">#  arrange(-tot_cases) %&gt;%</span>
+<span class="co">#  head(10)</span>
+
+<span class="co">#example</span></pre></div>
+<p>The final function, <code>output_table</code>, converts any data frame into a stylish and presentable table using the <code>kableExtra</code> package and can be seen alongside the time series chart in the application.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+
+<span class="co">#usa_covid_data %&gt;%</span>
+<span class="co">#  select(date, state, tot_cases)%&gt;%</span>
+<span class="co">#  filter(state == "california") %&gt;%</span>
+<span class="co">#  head(5) %&gt;%</span>
+<span class="co">#output_table("cases", "Total cases in California per day")</span></pre></div>
+</div>
+<div id="additional-information" class="section level2">
+<h2 class="hasAnchor">
+<a href="#additional-information" class="anchor"></a>Additional information</h2>
+<p>For more detailed instructions on how to use the package and the functions contained within it, please consult the <a href="https://github.com/etc5523-2020/r-package-assessment-AbhishekSinha28">vignette</a></p>
 </div>
 </div>
   </div>
@@ -101,13 +155,7 @@
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://github.com/etc5523-2020/r-package-assessment-AbhishekSinha28/actions"><img src="https://github.com/etc5523-2020/r-package-assessment-AbhishekSinha28/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
-</ul>
-</div>
-</div>
+  </div>
 </div>
 
 
