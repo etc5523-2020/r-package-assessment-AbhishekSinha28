@@ -3,6 +3,6 @@
 export(average_measure)
 export(launch_app)
 export(output_table)
-export(random_states)
 export(select_input)
+export(states_random)
 importFrom(magrittr,"%>%")

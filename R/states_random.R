@@ -9,9 +9,9 @@
 #' @export
 #'
 #' @examples
-#' random_states(usa_state_map)
+#' states_random(usa_state_map)
 #' 
-random_states <- function(data){
+states_random <- function(data){
   states <- unique(data$region)
   sample(states, 2)
 }
