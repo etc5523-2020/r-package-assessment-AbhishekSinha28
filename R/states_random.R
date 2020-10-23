@@ -9,9 +9,9 @@
 #' @export
 #'
 #' @examples
-#' states_random(aus_covid_data)
+#' random_states(usa_state_map)
 #' 
-states_random <- function(data){
-  states <- unique(data$province)
+random_states <- function(data){
+  states <- unique(data$region)
   sample(states, 2)
 }

@@ -2,10 +2,10 @@
 % Please edit documentation in R/launch_app.R
 \name{launch_app}
 \alias{launch_app}
-\title{Launch the shiny application for Australia COVID19 data exploration}
+\title{Launch the shiny application for USA COVID19 data exploration}
 \usage{
 launch_app()
 }
 \description{
-Launch the shiny application for Australia COVID19 data exploration
+Launch the shiny application for USA COVID19 data exploration
 }
