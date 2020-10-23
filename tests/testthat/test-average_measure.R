@@ -4,3 +4,4 @@ test_that("average_measure", {
   expect_equal(ncol(test), 3)
   expect_error(average_measure("tot_cases"))
 })
+
