@@ -1,16 +1,36 @@
-Package: yourPkg
-Title: What the Package Does (One Line, Title Case)
+Package: Covid19US
+Title: ETC5523 Shiny Package
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Abhishek",
+           family = "Sinha",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
+           email = "asin0080@student.monash.edu",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+Description: Packaging newly created shiny application for exploring COVID19 related data in the United States of America (USA). This includes exporting a function to launch the application, new functions to produce the content of the application, conducting unit testing, documenting how to use the package and its outputs, and hosting a website using pkgdown which is deployed via GitHub Actions.
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+Depends: 
+    R (>= 2.10)
+Imports: 
+    shiny,
+    kableExtra,
+    magrittr,
+    dplyr,
+    ggplot2,
+    maps,
+    readxl,
+    lubridate,
+    scales,
+    plotly,
+    mapproj,
+    tidyr    
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat,
+    devtools
+VignetteBuilder: knitr

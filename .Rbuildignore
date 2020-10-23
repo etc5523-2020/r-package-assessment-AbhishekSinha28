@@ -1,2 +1,9 @@
 ^\.Rproj\.user$
 ^\.github$
+^.*\.Rproj$
+^LICENSE\.md$
+^Covid19US\.Rproj$
+^README\.Rmd$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
